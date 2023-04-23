@@ -13,8 +13,14 @@ class DatabaseConnection:
         })
 
     def upload_to_db(self, data: dict):
-        ref = db.reference("/")
-        ref.set(data)
+        db_ref = db.reference("/")
+        db_ref.set(data)
+
+    def retrieve_from_db(self) -> list:
+        db_ref = db.reference("/")
+        data = db_ref.get()
+        retrieved_set = list(data["Encrypted Text"])
+        return retrieved_set
 
 
 
