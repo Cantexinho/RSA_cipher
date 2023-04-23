@@ -3,7 +3,7 @@ from firebase_admin import credentials, db
 
 class DatabaseConnection:
     def __init__(self) -> None:
-        self.service_account_key_path  = "C:/Users/cante/Desktop/Sauga/RSA_Cipher/service_account.json"
+        self.service_account_key_path  = "type in path to service_account.json"
         self.cred = credentials.Certificate(self.service_account_key_path)
         self.init_database_connection(self.cred)
 
