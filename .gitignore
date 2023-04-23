@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 env/
+.env
 bin/
 build/
 develop-eggs/
@@ -36,3 +37,6 @@ pytest_cache/
 
 # Python virtual environment
 venv/
+
+# Service account
+service_account.json

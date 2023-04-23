@@ -1,4 +1,5 @@
 from key_generator import KeyGenerator
+from db_connection import DatabaseConnection as db
 
 def encrypt(public_key, plaintext):
     e, n = public_key
@@ -16,6 +17,9 @@ if __name__ == "__main__":
     private_key = keys.private_key
     print("Public Key:", public_key)
     print("Private Key:", private_key)
+    database = db()
+    database.upload_to_db({"Public Key": public_key})
+
 
     # message = "56"
     # encrypted_msg = encrypt(public_key, message)
