@@ -16,7 +16,9 @@ class KeyGenerator:
             if not self.is_prime(q):
                 print(f"Error: Your entered number is not prime.")
             elif p == q:
-                    print(f"Error: p and q cannot be equal.")
+                print(f"Error: p and q cannot be equal.")
+            elif p * q < 128:
+                print(f"Error: p times q must be more than 127.")
             else:
                 return [p, q]
 
@@ -51,10 +53,10 @@ class KeyGenerator:
         p, q = pq
         n = p * q
         phi = (p - 1) * (q - 1)
-        e = 65537
 
-        if self.greatest_common_divisor(e, phi) != 1:
-            raise ValueError("e and phi are not coprime")
+        for e in range(2, phi):
+            if self.greatest_common_divisor(e, phi) == 1:
+                break
 
         d = self.mod_inverse(e, phi)
         return (e, n), (d, n)
